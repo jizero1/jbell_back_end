@@ -87,9 +87,10 @@ public enum ErrorCode {
 	/** 리소스 소유자가 아님 (본인 글만 수정/삭제 가능) */
 	NOT_RESOURCE_OWNER(HttpStatus.FORBIDDEN, "본인의 리소스만 수정/삭제할 수 있습니다."),
 
+
 	/** 밴드 리더가 아님 (리더 권한 필요함) */
 	NOT_BAND_LEADER(HttpStatus.FORBIDDEN, "밴드 리더만 수행할 수 있는 작업입니다."),
-
+	
 	/** 정지된 계정 (신고 등으로 인한 제재) */
 	ACCOUNT_SUSPENDED(HttpStatus.FORBIDDEN, "정지된 계정입니다. 관리자에게 문의하세요."),
 
@@ -106,20 +107,8 @@ public enum ErrorCode {
 	/** 리소스를 찾을 수 없음 */
 	NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
 
-	/** 상품정보를 찾을 수 없음 */
-	PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 상품의 정보를 찾을 수 없습니다."),
-
 	/** 사용자 정보 없음 */
 	USER_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 사용자입니다."),
-
-	/** 밴드 정보 없음 */
-	BAND_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 밴드입니다."),
-
-	/** 스튜디오 정보 없음 */
-	STUDIO_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 스튜디오입니다."),
-
-	/** 방 정보 없음 */
-	ROOM_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 방입니다."),
 
 	/** 게시글 정보 없음 */
 	POST_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 게시글입니다."),
@@ -130,29 +119,8 @@ public enum ErrorCode {
 	/** 답글 정보 없음 */
 	REPLY_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 답글입니다."),
 
-	/** 예약 정보 없음 */
-	RESERVATION_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 예약입니다."),
-
-	/** 결제 정보 없음 */
-	PAYMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 결제 정보입니다."),
-
 	/** 파일 정보 없음 */
 	FILE_NOT_FOUND(HttpStatus.NOT_FOUND, "파일을 찾을 수 없습니다."),
-
-	/** 밴드 모집글 정보 없음 */
-	BAND_RECRUITMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 밴드 모집글입니다."),
-
-	/** 게스트 모집글 정보 없음 */
-	GUEST_RECRUITMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 게스트 모집글입니다."),
-
-	/** 공연 정보 없음 */
-	EVENT_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 공연입니다."),
-
-	/** 중고거래 게시글 정보 없음 */
-	TRADE_POST_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 중고거래 게시글입니다."),
-
-	/** 쪽지 정보 없음 */
-	MESSAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 쪽지입니다."),
 
 	/** 일정 정보 없음 */
 	SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 일정입니다."),
@@ -184,15 +152,6 @@ public enum ErrorCode {
 	/** 중복된 전화번호 */
 	DUPLICATE_PHONE_NUMBER(HttpStatus.CONFLICT, "이미 등록된 전화번호입니다."),
 
-	/** 중복된 밴드 이름 */
-	DUPLICATE_BAND_NAME(HttpStatus.CONFLICT, "이미 사용 중인 밴드 이름입니다."),
-
-	/** 중복된 스튜디오 이름 */
-	DUPLICATE_STUDIO_NAME(HttpStatus.CONFLICT, "이미 등록된 스튜디오 이름입니다."),
-
-	/** 이미 밴드 멤버로 가입됨 */
-	ALREADY_BAND_MEMBER(HttpStatus.CONFLICT, "이미 해당 밴드의 멤버입니다."),
-
 	/** 이미 신청 완료 */
 	ALREADY_APPLIED(HttpStatus.CONFLICT, "이미 신청하였습니다."),
 
@@ -218,18 +177,6 @@ public enum ErrorCode {
 	/** 탈퇴한 사용자 */
 	WITHDRAWN_USER(HttpStatus.GONE, "탈퇴한 사용자입니다."),
 
-	/** 해체된 밴드 */
-	DISBANDED_BAND(HttpStatus.GONE, "해체된 밴드입니다."),
-
-	/** 마감된 게시글 (모집 완료) */
-	CLOSED_POST(HttpStatus.GONE, "마감된 게시글입니다."),
-
-	/** 종료된 공연 */
-	EXPIRED_EVENT(HttpStatus.GONE, "종료된 공연입니다."),
-
-	/** 판매 완료된 중고거래 상품 */
-	SOLD_OUT(HttpStatus.GONE, "판매 완료된 상품입니다."),
-
 	// 413 Payload Too Large
 	/** 요청 본문 크기 초과 */
 	PAYLOAD_TOO_LARGE(HttpStatus.PAYLOAD_TOO_LARGE, "요청 데이터가 너무 큽니다."),
@@ -241,63 +188,6 @@ public enum ErrorCode {
 	// 422 Unprocessable Entity
 	/** 의미상 오류가 있는 요청 */
 	UNPROCESSABLE_ENTITY(HttpStatus.UNPROCESSABLE_ENTITY, "처리할 수 없는 요청입니다."),
-
-	/** 날짜 범위 오류 (시작일 > 종료일) */
-	INVALID_DATE_RANGE(HttpStatus.UNPROCESSABLE_ENTITY, "날짜 범위가 올바르지 않습니다."),
-
-	/** 시간 범위 오류 (시작 시간 > 종료 시간) */
-	INVALID_TIME_RANGE(HttpStatus.UNPROCESSABLE_ENTITY, "시간 범위가 올바르지 않습니다."),
-
-	/** 과거 날짜 선택 불가 */
-	PAST_DATE_NOT_ALLOWED(HttpStatus.UNPROCESSABLE_ENTITY, "과거 날짜는 선택할 수 없습니다."),
-
-	/** 영업 시간 외 예약 시도 */
-	INVALID_BUSINESS_HOURS(HttpStatus.UNPROCESSABLE_ENTITY, "영업 시간이 아닙니다."),
-
-	/** 최소 예약 시간 미충족 */
-	MIN_RESERVATION_TIME_NOT_MET(HttpStatus.UNPROCESSABLE_ENTITY, "최소 예약 시간을 충족하지 못했습니다."),
-
-	/** 최대 수용 인원 초과 */
-	MAX_CAPACITY_EXCEEDED(HttpStatus.UNPROCESSABLE_ENTITY, "최대 인원을 초과했습니다."),
-
-	/** 모집 마감 */
-	RECRUITMENT_CLOSED(HttpStatus.UNPROCESSABLE_ENTITY, "모집이 마감되었습니다."),
-
-	/** 모집 인원 초과 */
-	RECRUITMENT_FULL(HttpStatus.UNPROCESSABLE_ENTITY, "모집 인원이 초과되었습니다."),
-
-	/** 본인 게시글 신청 불가 */
-	CANNOT_APPLY_OWN_POST(HttpStatus.UNPROCESSABLE_ENTITY, "본인의 게시글에는 신청할 수 없습니다."),
-
-	/** 리더는 밴드 탈퇴 불가 */
-	CANNOT_LEAVE_AS_LEADER(HttpStatus.UNPROCESSABLE_ENTITY, "리더는 밴드를 탈퇴할 수 없습니다. 리더를 위임하거나 밴드를 해체하세요."),
-
-	/** 마지막 멤버 탈퇴 불가 */
-	LAST_MEMBER_CANNOT_LEAVE(HttpStatus.UNPROCESSABLE_ENTITY, "마지막 멤버는 탈퇴할 수 없습니다."),
-
-	/** 잔액 부족 */
-	INSUFFICIENT_BALANCE(HttpStatus.UNPROCESSABLE_ENTITY, "잔액이 부족합니다."),
-
-	/** 결제 금액 불일치 */
-	PAYMENT_AMOUNT_MISMATCH(HttpStatus.UNPROCESSABLE_ENTITY, "결제 금액이 일치하지 않습니다."),
-
-	/** 예약 취소 불가 상태 */
-	CANNOT_CANCEL_RESERVATION(HttpStatus.UNPROCESSABLE_ENTITY, "예약 취소가 불가능한 상태입니다."),
-
-	/** 취소 기한 경과 */
-	CANCELLATION_DEADLINE_PASSED(HttpStatus.UNPROCESSABLE_ENTITY, "취소 가능 시간이 지났습니다."),
-
-	/** 이미 취소된 예약 */
-	ALREADY_CANCELLED(HttpStatus.UNPROCESSABLE_ENTITY, "이미 취소된 예약입니다."),
-
-	/** 멤버가 있는 밴드는 삭제 불가 */
-	CANNOT_DELETE_WITH_MEMBERS(HttpStatus.UNPROCESSABLE_ENTITY, "멤버가 있는 밴드는 삭제할 수 없습니다."),
-
-	/** 승인 후 수정 불가 */
-	CANNOT_MODIFY_AFTER_APPROVAL(HttpStatus.UNPROCESSABLE_ENTITY, "승인 후에는 수정할 수 없습니다."),
-
-	/** 잘못된 상태 전환 (예: 대기 → 완료로 바로 변경) */
-	INVALID_STATUS_TRANSITION(HttpStatus.UNPROCESSABLE_ENTITY, "잘못된 상태 전환입니다."),
 
 	// 423 Locked
 	/** 리소스가 잠김 (동시 수정 방지) */
@@ -340,15 +230,6 @@ public enum ErrorCode {
 	/** 이미지 처리 실패 (리사이징, 압축 등) */
 	IMAGE_PROCESSING_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "이미지 처리 중 오류가 발생했습니다."),
 
-	/** 결제 처리 실패 */
-	PAYMENT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "결제 처리 중 오류가 발생했습니다."),
-
-	/** 결제 검증 실패 */
-	PAYMENT_VERIFICATION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "결제 검증 중 오류가 발생했습니다."),
-
-	/** 환불 처리 실패 */
-	REFUND_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "환불 처리 중 오류가 발생했습니다."),
-
 	/** 이메일 전송 실패 */
 	EMAIL_SEND_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "이메일 전송 중 오류가 발생했습니다."),
 
@@ -373,9 +254,6 @@ public enum ErrorCode {
 
 	/** 외부 API 호출 실패 */
 	EXTERNAL_API_ERROR(HttpStatus.BAD_GATEWAY, "외부 API 호출 중 오류가 발생했습니다."),
-
-	/** 결제 게이트웨이 (Toss Payments 등) 오류 */
-	PAYMENT_GATEWAY_ERROR(HttpStatus.BAD_GATEWAY, "결제 게이트웨이 오류가 발생했습니다."),
 
 	/** 카카오맵 등 지도 API 오류 */
 	MAP_API_ERROR(HttpStatus.BAD_GATEWAY, "지도 API 호출 중 오류가 발생했습니다."),
